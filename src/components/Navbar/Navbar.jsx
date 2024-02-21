@@ -35,6 +35,9 @@ const Navbar = () => {
         <a className="nav-links" href="/signup">
           Profile
         </a>
+        <a className="nav-links" href="/article/add">
+          Add Article
+        </a>
       </>
     );
   }

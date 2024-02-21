@@ -41,6 +41,14 @@
   margin: auto;
 }
 
+.featured-link {
+  color: #eee;
+}
+
+.featured-card-title {
+  padding: 10px;
+}
+
 @media only screen and (max-width: 768px) {
   .featured-card {
     width: 90%;

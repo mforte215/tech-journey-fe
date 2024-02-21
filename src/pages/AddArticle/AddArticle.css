@@ -1,0 +1,30 @@
+.article-content-text-area {
+  width: 100%;
+  resize: none;
+  height: 200px;
+}
+.add-article-page-title {
+  text-align: center;
+  margin-top: 3%;
+}
+
+.add-article-container {
+  text-align: center;
+  margin: 1% auto;
+  width: 40%;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  background-color: var(--mainColor);
+  color: #eee;
+}
+
+@media screen and (max-width: 1024px) {
+  .add-article-container {
+    width: 80%;
+  }
+  .signup-input {
+    font-size: 1em;
+    text-align: center;
+    padding: 5px;
+  }
+}

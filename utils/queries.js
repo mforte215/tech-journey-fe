@@ -40,3 +40,31 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_BLOGS = gql`query Blogs {
+  blogs {
+    _id
+    image
+    title
+    subtitle
+    date
+    author {
+      _id
+      username
+    }
+  }
+}`
+
+export const QUERY_BLOG = gql`query Blog($id: ID) {
+  blog(_id: $id) {
+    _id
+    image
+    title
+    subtitle
+    content
+    author {
+      username
+    }
+    date
+  }
+}`
