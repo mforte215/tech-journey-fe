@@ -1,0 +1,49 @@
+.featured-blog-container {
+  text-align: center;
+  margin: 1% auto;
+  width: 100%;
+}
+
+.featured-top-container {
+  color: #eee;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.featured-card {
+  width: 20%;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  background-color: var(--mainColor);
+  margin: 1% 2.5%;
+  min-width: 175px;
+  max-height: 25em;
+}
+
+.featured-card img {
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.featured-title {
+  text-align: left;
+  width: 75%;
+  margin: auto;
+  padding-bottom: 5px;
+}
+
+.featured-title-linebreak {
+  width: 75%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .featured-card {
+    width: 90%;
+    margin-bottom: 3%;
+  }
+}

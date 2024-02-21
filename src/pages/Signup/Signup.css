@@ -1,0 +1,50 @@
+.signup-page-title {
+  text-align: center;
+  margin-top: 3%;
+}
+
+.signup-form-container {
+  text-align: center;
+  margin: 1% auto;
+  width: 40%;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 12px;
+  background-color: var(--mainColor);
+  color: #eee;
+}
+
+.signup-form-control {
+  padding: 10px;
+}
+.signup-label {
+  font-size: 1.5em;
+}
+
+.signup-input {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 5px;
+  max-width: 100%;
+  margin-bottom: 3%;
+}
+
+.signup-btn {
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+.err-message {
+  text-align: center;
+  color: red;
+}
+
+@media screen and (max-width: 1024px) {
+  .signup-form-container {
+    width: 80%;
+  }
+  .signup-input {
+    font-size: 1em;
+    text-align: center;
+    padding: 5px;
+  }
+}

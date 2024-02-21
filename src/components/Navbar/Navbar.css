@@ -11,6 +11,7 @@
   height: 80px;
   padding: 0 2rem;
   background-color: #29335c;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
   color: #eee;
 }
 
@@ -35,6 +36,10 @@
   color: rgb(229, 65, 65);
 }
 
+.logout-btn {
+  cursor: pointer;
+}
+
 @media screen and (min-midth: 1024px) {
   .nav-btn {
     visibility: visible;
@@ -52,7 +57,7 @@
     justify-content: center;
     gap: 1.5rem;
     background-color: #29335c;
-    transition: 1s;
+    transition: 0.5s;
     transform: translateY(-100vh);
   }
 

@@ -1,6 +1,7 @@
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useRef } from "react";
 import "./Navbar.css";
+import Auth from "../../../utils/auth";
 
 const Navbar = () => {
   const navRef = useRef();
@@ -9,6 +10,35 @@ const Navbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
 
+  const handleLogout = () => {
+    console.log("LOGGING OUT");
+    Auth.logout();
+  };
+
+  let userLinks = (
+    <>
+      <a className="nav-links" href="/login">
+        Login
+      </a>
+      <a className="nav-links" href="/signup">
+        Sign Up
+      </a>
+    </>
+  );
+
+  if (Auth.loggedIn()) {
+    userLinks = (
+      <>
+        <a className="nav-links logout-btn" onClick={handleLogout}>
+          Logout
+        </a>
+        <a className="nav-links" href="/signup">
+          Profile
+        </a>
+      </>
+    );
+  }
+
   return (
     <>
       <h3>Tech Journey</h3>
@@ -16,12 +46,13 @@ const Navbar = () => {
         <a className="nav-links" href="/">
           Home
         </a>
-        <a className="nav-links" href="/">
+        <a className="nav-links" href="/latest">
           Latest
         </a>
-        <a className="nav-links" href="/">
+        <a className="nav-links" href="/archive">
           Archive
         </a>
+        {userLinks}
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
