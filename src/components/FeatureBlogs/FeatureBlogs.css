@@ -14,19 +14,22 @@
 }
 
 .featured-card {
-  width: 20%;
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 12px;
   background-color: var(--mainColor);
-  margin: 1% 2.5%;
-  min-width: 175px;
   max-height: 25em;
+  min-width: 200px;
+  margin: 2.5%;
+  border-radius: 12px;
+  width: 20%;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
-.featured-card img {
+.featured-card-image {
   width: 100%;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  height: 25em;
+  border-radius: 12px;
 }
 
 .featured-title {
@@ -42,13 +45,22 @@
 }
 
 .featured-link {
-  color: #eee;
+  text-decoration: none;
 }
 
 .featured-card-title {
   padding: 10px;
 }
 
+.featured-card-meta {
+  position: relative;
+  background-color: rgba(176, 63, 63, 0.5);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  top: -200px;
+  height: 12.5em;
+  text-align: center;
+}
 @media only screen and (max-width: 768px) {
   .featured-card {
     width: 90%;

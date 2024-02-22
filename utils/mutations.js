@@ -34,3 +34,9 @@ export const ADD_BLOG = gql`mutation Mutation($image: String!, $title: String!, 
       }
     }
   }`
+
+export const DELETE_BLOG = gql`mutation Mutation($removeBlogId: ID!) {
+    removeBlog(id: $removeBlogId) {
+      _id
+    }
+  }`

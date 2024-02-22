@@ -40,9 +40,6 @@
   flex-wrap: wrap;
 }
 
-.latest-card {
-}
-
 .latest-card img {
   width: 25%;
   float: left;
@@ -51,8 +48,8 @@
 }
 
 .latest-card-detail-container {
-  margin: 2% 3%;
   float: left;
+  width: 70%;
 }
 
 .latest-card-detail-container h2 {
@@ -64,6 +61,11 @@
 
 @media only screen and (max-width: 768px) {
   .latest-card img {
+    width: 100%;
+  }
+  .latest-card-detail-container {
+    text-align: center;
+    margin: auto;
     width: 100%;
   }
 }

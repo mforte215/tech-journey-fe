@@ -44,6 +44,7 @@ const AddArticle = () => {
 
       console.log("LOGGING NEWLY CREATED BLOG");
       console.log(data);
+      window.location.assign(`/article/${data.addBlog._id}`);
     } catch (error) {
       console.log(error);
     }

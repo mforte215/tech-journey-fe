@@ -10,6 +10,7 @@ import Signup from "./pages/Signup/Signup.jsx";
 import Archive from "./pages/Archive/Archive.jsx";
 import AddArticle from "./pages/AddArticle/AddArticle.jsx";
 import Article from "./pages/Article/Article.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/article/:id",
         element: <Article />,
+      },
+      {
+        path: "/profile/me",
+        element: <Profile />,
       },
     ],
   },

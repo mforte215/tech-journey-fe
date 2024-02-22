@@ -68,3 +68,17 @@ export const QUERY_BLOG = gql`query Blog($id: ID) {
     date
   }
 }`
+
+export const QUERY_MY_BLOGS = gql`query Me {
+  me {
+    _id
+    image
+    title
+    subtitle
+    content
+    author {
+      username
+    }
+    date
+  }
+}`

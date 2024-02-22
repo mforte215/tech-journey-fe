@@ -40,6 +40,10 @@
   cursor: pointer;
 }
 
+.logo-header-link {
+  cursor: pointer;
+}
+
 @media screen and (min-midth: 1024px) {
   .nav-btn {
     visibility: visible;
@@ -59,9 +63,11 @@
     background-color: #29335c;
     transition: 0.5s;
     transform: translateY(-100vh);
+    z-index: 10;
   }
 
   .responsive_nav {
     transform: none;
+    z-index: 10;
   }
 }

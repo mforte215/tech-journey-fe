@@ -15,6 +15,10 @@ const Navbar = () => {
     Auth.logout();
   };
 
+  const logoClickhandler = () => {
+    window.location.assign("/");
+  };
+
   let userLinks = (
     <>
       <a className="nav-links" href="/login">
@@ -32,7 +36,7 @@ const Navbar = () => {
         <a className="nav-links logout-btn" onClick={handleLogout}>
           Logout
         </a>
-        <a className="nav-links" href="/signup">
+        <a className="nav-links" href="/profile/me">
           Profile
         </a>
         <a className="nav-links" href="/article/add">
@@ -44,7 +48,9 @@ const Navbar = () => {
 
   return (
     <>
-      <h3>Tech Journey</h3>
+      <h3 className="logo-header-link" onClick={logoClickhandler}>
+        Tech Journey
+      </h3>
       <nav className="nav-bar" ref={navRef}>
         <a className="nav-links" href="/">
           Home
