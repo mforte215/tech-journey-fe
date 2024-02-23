@@ -13,7 +13,9 @@ const LatestArticleFeed = (props) => {
             <h2>{blog.title}</h2>
             <h3>{blog.subtitle}</h3>
             <h3>
-              by {blog.author.username} at {blog.date}
+              by{" "}
+              <a href={`/profile/${blog.author._id}`}>{blog.author.username}</a>{" "}
+              at {blog.date}
             </h3>
           </div>
         </div>

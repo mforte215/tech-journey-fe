@@ -11,7 +11,8 @@ import Archive from "./pages/Archive/Archive.jsx";
 import AddArticle from "./pages/AddArticle/AddArticle.jsx";
 import Article from "./pages/Article/Article.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
-
+import PublicProfile from "./pages/PublicProfile/PublicProfile.jsx";
+import EditArticle from "./pages/EditArticle/EditArticle.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,8 +48,16 @@ const router = createBrowserRouter([
         element: <Article />,
       },
       {
+        path: "/article/edit/:id",
+        element: <EditArticle />,
+      },
+      {
         path: "/profile/me",
         element: <Profile />,
+      },
+      {
+        path: "/profile/:id",
+        element: <PublicProfile />,
       },
     ],
   },

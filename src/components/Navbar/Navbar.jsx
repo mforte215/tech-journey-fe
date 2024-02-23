@@ -55,12 +55,6 @@ const Navbar = () => {
         <a className="nav-links" href="/">
           Home
         </a>
-        <a className="nav-links" href="/latest">
-          Latest
-        </a>
-        <a className="nav-links" href="/archive">
-          Archive
-        </a>
         {userLinks}
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
