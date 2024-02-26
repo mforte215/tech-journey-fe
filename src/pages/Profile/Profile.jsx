@@ -29,6 +29,10 @@ const Profile = () => {
     window.location.assign(`/article/${id}`);
   };
 
+  const loadEditArticleHandler = (id) => {
+    window.location.assign(`/article/edit/${id}`);
+  };
+
   const deleteArticleModalHandler = async () => {
     try {
       console.log("LOGGING ID TO DELETE:" + currentArticle.id);
@@ -87,7 +91,12 @@ const Profile = () => {
               view
             </button>
             <br />
-            <button className="edit-article-btn">edit</button>
+            <button
+              className="edit-article-btn"
+              onClick={() => loadEditArticleHandler(blog._id)}
+            >
+              edit
+            </button>
             <br />
             <button
               className="delete-article-btn"
@@ -122,10 +131,18 @@ const Profile = () => {
                 Are you sure you want to delete the article:
                 {" " + currentArticle.name}?
               </h2>
-              <button onClick={deleteArticleModalHandler} ref={deleteBtnYes}>
+              <button
+                className="modal-delete-btn"
+                onClick={deleteArticleModalHandler}
+                ref={deleteBtnYes}
+              >
                 Yes
               </button>
-              <button onClick={closeModalHandler} ref={deleteBtnNo}>
+              <button
+                className="modal-close-btn"
+                onClick={closeModalHandler}
+                ref={deleteBtnNo}
+              >
                 No
               </button>
             </div>

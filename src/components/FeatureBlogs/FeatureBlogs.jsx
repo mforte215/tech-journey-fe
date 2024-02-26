@@ -12,6 +12,7 @@ const FeatureBlogs = (props) => {
       count++;
       return (
         <div
+          key={blog._id}
           className="featured-card"
           onClick={() => {
             loadFeaturedArticleHandler(blog._id);

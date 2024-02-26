@@ -4,6 +4,7 @@ const LatestArticleFeed = (props) => {
   const foundArticles = props.blogs.map((blog) => {
     return (
       <button
+        key={blog._id}
         className="latest-card-btn"
         onClick={() => loadArticleHandler(blog._id)}
       >

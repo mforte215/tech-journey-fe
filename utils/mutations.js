@@ -40,3 +40,18 @@ export const DELETE_BLOG = gql`mutation Mutation($removeBlogId: ID!) {
     _id
   }
 }`
+
+export const EDIT_BLOG = gql`mutation Mutation($blogId: ID!, $image: String, $title: String, $subtitle: String, $content: String) {
+  editBlog(blogId: $blogId, image: $image, title: $title, subtitle: $subtitle, content: $content) {
+    _id
+    image
+    title
+    subtitle
+    content
+    author {
+      _id
+      username
+    }
+    date
+  }
+}`

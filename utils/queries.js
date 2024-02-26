@@ -96,3 +96,14 @@ export const QUERY_BLOGS_BY_USER = gql`query UserBlogs($id: ID) {
     date
   }
 }`;
+
+export const QUERY_SINGLE_BLOG_BY_USER = gql`query SingleBlogByMe($blogId: ID!) {
+  singleBlogByMe(blogId: $blogId) {
+    _id
+    image
+    title
+    subtitle
+    content
+    date
+  }
+}`

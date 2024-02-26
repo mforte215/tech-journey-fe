@@ -102,3 +102,19 @@
 .modal-info-text {
   margin: 3%;
 }
+
+.modal-delete-btn {
+  padding: 20px;
+  background-color: red;
+  margin: 5%;
+  border-radius: 12px;
+  font-size: larger;
+}
+
+.modal-close-btn {
+  padding: 20px;
+  background-color: yellow;
+  margin: 5%;
+  border-radius: 12px;
+  font-size: larger;
+}
