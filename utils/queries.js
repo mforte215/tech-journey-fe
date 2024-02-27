@@ -106,4 +106,8 @@ export const QUERY_SINGLE_BLOG_BY_USER = gql`query SingleBlogByMe($blogId: ID!) 
     content
     date
   }
+}`;
+
+export const QUERY_DOES_USER_EXIST = gql`query Query($email: String) {
+  checkIfAccountExists(email: $email)
 }`

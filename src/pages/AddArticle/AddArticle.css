@@ -1,7 +1,7 @@
 .article-content-text-area {
   width: 100%;
   resize: none;
-  height: 200px;
+  height: 400px;
 }
 .add-article-page-title {
   text-align: center;
@@ -9,13 +9,21 @@
 }
 
 .add-article-container {
-  text-align: center;
+  text-align: left;
   margin: 1% auto;
   width: 40%;
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
   border-radius: 12px;
   background-color: var(--mainColor);
   color: #eee;
+}
+
+.add-article-input {
+  font-size: 1.5em;
+  text-align: left;
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 3%;
 }
 
 @media screen and (max-width: 1024px) {

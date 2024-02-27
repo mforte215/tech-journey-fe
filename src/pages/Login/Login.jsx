@@ -50,14 +50,14 @@ const Login = () => {
       <h3 className="err-message" ref={errorBox}>
         {errorMessage}
       </h3>
-      <div className="signup-form-container">
+      <div className="login-form-container">
         <form onSubmit={loginHandler}>
           <div className="signup-form-control">
             <label className="signup-label">username</label>
             <br />
             <input
               required
-              className="signup-input"
+              className="login-input"
               type="text"
               ref={usernameRef}
             />
@@ -68,13 +68,13 @@ const Login = () => {
             <input
               autoComplete="on"
               required
-              className="signup-input"
+              className="login-input"
               type="password"
               ref={passwordRef}
             />
           </div>
           <div className="signup-form-control">
-            <input className="signup-btn" type="submit" value="SUBMIT" />
+            <input className="signup-btn" type="submit" value="LOGIN" />
           </div>
         </form>
       </div>

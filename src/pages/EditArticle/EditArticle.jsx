@@ -4,6 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRef, useState, useEffect } from "react";
 import { EDIT_BLOG } from "../../../utils/mutations";
+import { Editor } from "@tinymce/tinymce-react";
 import { QUERY_SINGLE_BLOG_BY_USER } from "../../../utils/queries";
 
 const EditArticle = () => {
@@ -34,7 +35,7 @@ const EditArticle = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const titleRef = useRef();
   const subtitleRef = useRef();
-  const contentRef = useRef();
+  const editorRef = useRef();
   const imageRef = useRef();
   const errorBox = useRef();
   const [editBlog, response] = useMutation(EDIT_BLOG);
@@ -44,7 +45,7 @@ const EditArticle = () => {
     event.preventDefault();
     const enteredTitle = titleRef.current.value.trim();
     const enteredSubtitle = subtitleRef.current.value.trim();
-    const enteredContent = contentRef.current.value.trim();
+    const enteredContent = editorRef.current.getContent();
     const enteredImage = imageRef.current.value.trim();
 
     console.log("LOGGING ENTERED ARTICLE DATA");
@@ -85,7 +86,7 @@ const EditArticle = () => {
               <br />
               <input
                 required
-                className="signup-input"
+                className="add-article-input"
                 type="text"
                 ref={titleRef}
                 value={titleState}
@@ -97,7 +98,7 @@ const EditArticle = () => {
               <br />
               <input
                 required
-                className="signup-input"
+                className="add-article-input"
                 type="text"
                 ref={subtitleRef}
                 value={subtitleState}
@@ -110,7 +111,7 @@ const EditArticle = () => {
               <input
                 autoComplete="on"
                 required
-                className="signup-input"
+                className="add-article-input"
                 type="text"
                 ref={imageRef}
                 value={imageState}
@@ -120,13 +121,29 @@ const EditArticle = () => {
             <div className="signup-form-control">
               <label className="signup-label">content</label>
               <br />
-              <textarea
-                className="article-content-text-area"
-                ref={contentRef}
-                value={contentState}
-                required
-                onChange={(e) => setContentState(e.target.value)}
-              ></textarea>
+              <Editor
+                apiKey="x6gn9j30jiu49yezoh90a3j3hg65io19fr4j18pp9k05zn74"
+                onInit={(evt, editor) => (editorRef.current = editor)}
+                initialValue={contentState}
+                init={{
+                  plugins:
+                    "anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss",
+                  toolbar:
+                    "undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+                  tinycomments_mode: "embedded",
+                  tinycomments_author: "Author name",
+                  mergetags_list: [
+                    { value: "First.Name", title: "First Name" },
+                    { value: "Email", title: "Email" },
+                  ],
+                  ai_request: (request, respondWith) =>
+                    respondWith.string(() =>
+                      Promise.reject("See docs to implement AI Assistant")
+                    ),
+                  resize: false,
+                  content_css: "./article-content-text-area",
+                }}
+              />
             </div>
             <div className="signup-form-control">
               <input className="signup-btn" type="submit" value="SUBMIT" />

@@ -1,6 +1,7 @@
 import "./Article.css";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import parse from "html-react-parser";
 
 import { QUERY_BLOG } from "../../../utils/queries";
 
@@ -33,7 +34,7 @@ const Article = () => {
           </h3>
         </div>
         <hr />
-        <p className="article-main-content">{blog.content}</p>
+        <p className="article-main-content">{parse(blog.content)}</p>
       </div>
     </div>
   );
