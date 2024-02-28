@@ -54,4 +54,4 @@ export const EDIT_BLOG = gql`mutation Mutation($blogId: ID!, $image: String, $ti
     }
     date
   }
-}`
+}`;

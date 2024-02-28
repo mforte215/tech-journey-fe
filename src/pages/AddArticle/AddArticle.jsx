@@ -11,13 +11,58 @@ const AddArticle = () => {
   }
 
   const [errorMessage, setErrorMessage] = useState("");
+  const [tagDisplay, setTagDisplay] = useState(null);
+  const [tags, setTags] = useState([]);
   const titleRef = useRef();
   const subtitleRef = useRef();
   const editorRef = useRef(null);
   const imageRef = useRef();
   const errorBox = useRef();
+  const tagBox = useRef("");
+  let tagElements = null;
 
   const [addBlog, { error, data }] = useMutation(ADD_BLOG);
+
+  useEffect(() => {
+    displayTags();
+  }, [tags]);
+
+  const removeTag = (name) => {
+    //copy the current tags
+    let currentTags = [...tags];
+    const filteredTags = currentTags.filter((tag) => tag !== name);
+    setTags(filteredTags);
+  };
+
+  const displayTags = () => {
+    console.log("ADDING NEW TAGS");
+    console.log(tags);
+    tagElements = tags.map((tag) => {
+      return (
+        <div className="tag-container" key={`${tag}-key`}>
+          <p className="tag-name">{tag}</p>
+          <div onClick={() => removeTag(tag)} className="tag-delete-btn">
+            X
+          </div>
+        </div>
+      );
+    });
+    setTagDisplay(tagElements);
+  };
+  const addTagHandler = async (event) => {
+    event.preventDefault();
+    if (tagBox.current.value.trim()) {
+      console.log("TAG TO ADD");
+      let newTag = tagBox.current.value.trim();
+      console.log(newTag);
+      console.log("Current Tags");
+      if (!tags.includes(newTag)) {
+        setTags([...tags, newTag]);
+      }
+
+      //show the tags
+    }
+  };
 
   const addBlogHandler = async (event) => {
     //get the field values
@@ -40,6 +85,7 @@ const AddArticle = () => {
           title: enteredTitle,
           subtitle: enteredSubtitle,
           content: enteredContent,
+          tags: tags,
         },
       });
 
@@ -116,6 +162,21 @@ const AddArticle = () => {
               }}
             />
           </div>
+          <div className="signup-form-control">
+            <label className="signup-label">tags</label>
+            <br />
+            <input
+              autoComplete="on"
+              required
+              className="add-tag-input"
+              type="text"
+              ref={tagBox}
+            />
+            <button onClick={addTagHandler} className="add-tag-btn">
+              Add Tag
+            </button>
+          </div>
+          <div className="tag-display">{tagDisplay}</div>
           <div className="signup-form-control">
             <input className="signup-btn" type="submit" value="SUBMIT" />
           </div>
