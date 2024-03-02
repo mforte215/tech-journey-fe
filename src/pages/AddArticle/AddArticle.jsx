@@ -29,6 +29,7 @@ const AddArticle = () => {
 
   const removeTag = (name) => {
     //copy the current tags
+    console.log(tags);
     let currentTags = [...tags];
     const filteredTags = currentTags.filter((tag) => tag !== name);
     setTags(filteredTags);
@@ -167,7 +168,6 @@ const AddArticle = () => {
             <br />
             <input
               autoComplete="on"
-              required
               className="add-tag-input"
               type="text"
               ref={tagBox}

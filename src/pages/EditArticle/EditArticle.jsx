@@ -21,16 +21,37 @@ const EditArticle = () => {
   const [subtitleState, setSubtitleState] = useState("");
   const [contentState, setContentState] = useState("");
   const [imageState, setImageState] = useState("");
+  const [tagDisplay, setTagDisplay] = useState(null);
+  const [tags, setTags] = useState([]);
+  const tagBox = useRef("");
   blog = data?.singleBlogByMe || {};
+  let tagElements = null;
 
   useEffect(() => {
     if (!loading && data) {
+      console.log(data);
       setTitleState(data.singleBlogByMe.title);
       setSubtitleState(data.singleBlogByMe.subtitle);
       setContentState(data.singleBlogByMe.content);
       setImageState(data.singleBlogByMe.image);
+      setTags(data.singleBlogByMe.tags);
+      tagElements = data.singleBlogByMe.tags.map((tag) => {
+        return (
+          <div className="tag-container" key={tag._id}>
+            <p className="tag-name">{tag.name}</p>
+            <div onClick={() => removeTag(tag.name)} className="tag-delete-btn">
+              X
+            </div>
+          </div>
+        );
+      });
+      setTagDisplay(tagElements);
     }
   }, [loading, data]);
+
+  useEffect(() => {
+    displayTags();
+  }, [tags]);
 
   const [errorMessage, setErrorMessage] = useState("");
   const titleRef = useRef();
@@ -39,6 +60,81 @@ const EditArticle = () => {
   const imageRef = useRef();
   const errorBox = useRef();
   const [editBlog, response] = useMutation(EDIT_BLOG);
+
+  const displayTags = () => {
+    console.log(tags);
+    tagElements = tags.map((tag) => {
+      return (
+        <div className="tag-container" key={tag._id}>
+          <p className="tag-name">{tag.name}</p>
+          <div onClick={() => removeTag(tag.name)} className="tag-delete-btn">
+            X
+          </div>
+        </div>
+      );
+    });
+    setTagDisplay(tagElements);
+  };
+
+  const removeTag = (name) => {
+    //copy the current tags
+    console.log("REMOVING TAG:" + name);
+    let currentTags = [...tags];
+    console.log(currentTags);
+    const filteredTags = currentTags.filter((tag) => tag.name !== name);
+    console.log("FOUND FILTERED TAGS");
+    console.log(filteredTags);
+    setTags(filteredTags);
+    tagElements = filteredTags.map((tag) => {
+      return (
+        <div className="tag-container" key={tag._id}>
+          <p className="tag-name">{tag.name}</p>
+          <div onClick={() => removeTag(tag.name)} className="tag-delete-btn">
+            X
+          </div>
+        </div>
+      );
+    });
+    setTagDisplay(tagElements);
+  };
+
+  const addTagHandler = async (event) => {
+    event.preventDefault();
+    if (tagBox.current.value.trim()) {
+      console.log("TAG TO ADD");
+      let newTag = tagBox.current.value.trim();
+      console.log(newTag);
+      console.log("Current Tags");
+      let tagObj = {
+        _id: newTag + "-key",
+        name: newTag,
+      };
+      console.log(tags);
+      console.log(tags.length);
+      console.log("DOES NOT TAG EXIST IN THE OBJeCT ARRAY");
+      console.log(!tags.some((tag) => tag.name === tagObj.name));
+      if (!tags.some((tag) => tag.name === tagObj.name)) {
+        setTags([...tags, tagObj]);
+        let updatedTags = [...tags, tagObj];
+        tagElements = updatedTags.map((tag) => {
+          return (
+            <div className="tag-container" key={tag._id}>
+              <p className="tag-name">{tag.name}</p>
+              <div
+                onClick={() => removeTag(tag.name)}
+                className="tag-delete-btn"
+              >
+                X
+              </div>
+            </div>
+          );
+        });
+        setTagDisplay(tagElements);
+      }
+
+      //show the tags
+    }
+  };
 
   const editBlogHandler = async (event) => {
     //get the field values
@@ -53,7 +149,11 @@ const EditArticle = () => {
     console.log(enteredSubtitle);
     console.log(enteredContent);
     console.log(enteredImage);
-
+    //convert the array of objects to just an array of strings with the names
+    const stringTags = [];
+    for (const tag of tags) {
+      stringTags.push(tag.name);
+    }
     try {
       const { data } = await editBlog({
         variables: {
@@ -62,6 +162,7 @@ const EditArticle = () => {
           title: enteredTitle,
           subtitle: enteredSubtitle,
           content: enteredContent,
+          tags: stringTags,
         },
       });
 
@@ -145,6 +246,20 @@ const EditArticle = () => {
                 }}
               />
             </div>
+            <div className="signup-form-control">
+              <label className="signup-label">tags</label>
+              <br />
+              <input
+                autoComplete="on"
+                className="add-tag-input"
+                type="text"
+                ref={tagBox}
+              />
+              <button onClick={addTagHandler} className="add-tag-btn">
+                Add Tag
+              </button>
+            </div>
+            <div className="tag-display">{tagDisplay}</div>
             <div className="signup-form-control">
               <input className="signup-btn" type="submit" value="SUBMIT" />
             </div>

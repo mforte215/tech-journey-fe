@@ -17,3 +17,18 @@
 .article-main-meta {
   margin: 2% 0;
 }
+
+.article-tag-display {
+  margin: 2%;
+}
+
+.tag-container-article {
+  width: fit-content;
+  padding: 10px;
+  background-color: rgb(0, 153, 153);
+  margin: 1%;
+  border-radius: 12px;
+  display: inline;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}

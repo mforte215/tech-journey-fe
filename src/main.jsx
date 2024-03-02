@@ -14,6 +14,7 @@ import Article from "./pages/Article/Article.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import PublicProfile from "./pages/PublicProfile/PublicProfile.jsx";
 import EditArticle from "./pages/EditArticle/EditArticle.jsx";
+import BlogListByTag from "./pages/BlogListTags/BlogListTag.jsx";
 import GoogleNewLogin from "./pages/GoogleLogin/GoogleNewLogin.jsx";
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "new/login",
         element: <GoogleNewLogin />,
+      },
+      {
+        path: "/tag/:name",
+        element: <BlogListByTag />,
       },
     ],
   },

@@ -11,13 +11,29 @@ const Article = () => {
     // pass URL parameter
     variables: { id: id },
   });
+
+  const loadTagHandler = (name) => {
+    window.location.assign(`/tag/${name}`);
+  };
+
   const blog = data?.blog || {};
   console.log("LOGGING DATA");
   console.log(data);
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  console.log("LOGGING TAGS");
+  let tags = blog.tags.map((tag) => {
+    return (
+      <div
+        onClick={() => loadTagHandler(tag.name)}
+        className="tag-container-article"
+        key={tag._id}
+      >
+        <p className="tag-name">{tag.name}</p>
+      </div>
+    );
+  });
   return (
     <div>
       <div className="article-main-container">
@@ -33,6 +49,7 @@ const Article = () => {
             By {blog.author.username} at {blog.date}
           </h3>
         </div>
+        <div className="article-tag-display">{tags}</div>
         <hr />
         <p className="article-main-content">{parse(blog.content)}</p>
       </div>

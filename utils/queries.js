@@ -41,16 +41,21 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_BLOGS = gql`query Blogs {
+export const QUERY_BLOGS = gql`query Query {
   blogs {
     _id
     image
     title
     subtitle
-    date
+    content
     author {
       _id
       username
+    }
+    date
+    tags {
+      _id
+      name
     }
   }
 }`
@@ -63,9 +68,15 @@ export const QUERY_BLOG = gql`query Blog($id: ID) {
     subtitle
     content
     author {
+      _id
       username
+      email
     }
     date
+    tags {
+      _id
+      name
+    }
   }
 }`
 
@@ -104,10 +115,37 @@ export const QUERY_SINGLE_BLOG_BY_USER = gql`query SingleBlogByMe($blogId: ID!) 
     title
     subtitle
     content
+    author {
+      username
+      email
+    }
     date
+    tags {
+      _id
+      name
+    }
   }
 }`;
 
 export const QUERY_DOES_USER_EXIST = gql`query Query($email: String) {
   checkIfAccountExists(email: $email)
+}`
+
+export const QUERY_BLOGS_BY_TAG = gql`query BlogsByTag($tagName: String) {
+  blogsByTag(tagName: $tagName) {
+    _id
+    image
+    title
+    subtitle
+    content
+    author {
+      username
+      _id
+    }
+    date
+    tags {
+      _id
+      name
+    }
+  }
 }`
