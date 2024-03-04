@@ -26,7 +26,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
   // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
-  uri: "https://tech-journey-apollo-2137197654ec.herokuapp.com",
+  uri: "https://tech-journey-apollo-2137197654ec.herokuapp.com/graphql",
   cache: new InMemoryCache(),
 });
 
