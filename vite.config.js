@@ -9,7 +9,7 @@ export default defineConfig({
     open: true,
     proxy: {
       '/graphql': {
-        target: 'http://localhost:3001',
+        target: 'https://tech-journey-apollo-2137197654ec.herokuapp.com/',
         changeOrigin: true,
         secure: false,
       }
