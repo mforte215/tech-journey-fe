@@ -1,7 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ReactDOM from "react-dom/client";
-import { GoogleOAuthProvider } from "@react-oauth/google";
 import App from "./App.jsx";
 import Home from "./pages/Home/Home.jsx";
 import ErrorPage from "./pages/Error/ErrorPage.jsx";
@@ -16,6 +15,7 @@ import PublicProfile from "./pages/PublicProfile/PublicProfile.jsx";
 import EditArticle from "./pages/EditArticle/EditArticle.jsx";
 import BlogListByTag from "./pages/BlogListTags/BlogListTag.jsx";
 import GoogleNewLogin from "./pages/GoogleLogin/GoogleNewLogin.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,7 +75,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <GoogleOAuthProvider clientId="549450969339-d6d0lo1omagsqafsf14hjnnv2tn4q7i0.apps.googleusercontent.com">
-    <RouterProvider router={router} />
-  </GoogleOAuthProvider>
+  <RouterProvider router={router} />
 );
