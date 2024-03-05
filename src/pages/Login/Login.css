@@ -17,3 +17,14 @@
   margin-bottom: 3%;
   border-radius: 12px;
 }
+
+@media screen and (max-width: 1024px) {
+  .login-form-container {
+    width: 80%;
+  }
+  .login-input {
+    font-size: 1em;
+    text-align: center;
+    padding: 5px;
+  }
+}
