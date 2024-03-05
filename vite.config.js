@@ -5,12 +5,13 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 3000,
     open: true,
     proxy: {
       '/graphql': {
-        target: 'https://tech-journey-apollo-2137197654ec.herokuapp.com',
-        changeOrigin: true,
+        target: 'https://tech-journey-apollo-2137197654ec.herokuapp.com/',
         secure: false,
+        changeOrigin: true
       }
     }
   }
