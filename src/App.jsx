@@ -25,6 +25,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
+  uri: "https://tech-journey-apollo-2137197654ec.herokuapp.com/graphql",
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
