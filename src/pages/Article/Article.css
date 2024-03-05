@@ -19,7 +19,7 @@
 }
 
 .article-tag-display {
-  margin: 5% 2% 6% 2%;
+  margin: 2%;
 }
 
 .tag-container-article {
@@ -31,4 +31,9 @@
   display: inline;
   box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
+}
+@media only screen and (max-width: 768px) {
+  .article-tag-display {
+    margin: 5% 2% 6% 2%;
+  }
 }
