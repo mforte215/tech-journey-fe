@@ -5,7 +5,8 @@ const FeatureBlogs = (props) => {
     window.location.assign(`/article/${id}`);
     console.log("clicked link");
   };
-
+  console.log("LOGGING FEATURED BLOGS");
+  console.log(props);
   let count = 0;
   const foundBlogs = props.blogs.map((blog) => {
     if (count < 4) {

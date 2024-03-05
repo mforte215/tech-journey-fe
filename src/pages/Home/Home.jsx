@@ -7,6 +7,8 @@ import { QUERY_BLOGS } from "../../../utils/queries";
 const Home = () => {
   const { loading, data } = useQuery(QUERY_BLOGS);
   const blogs = data?.blogs || [];
+  console.log("LOGGING DATA AT HOME");
+  console.log(data);
   return (
     <div>
       <FeatureBlogs blogs={blogs} />
